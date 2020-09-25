@@ -37,15 +37,15 @@ let timeStampFormatterHHmmss: DateFormatter = {
 
 //extension for easily handle timeinterval outcomes in string and different formats
 extension TimeInterval{
-    func toTimeStampFormatter() -> String {
+    public func toTimeStampFormatter() -> String {
         return timeStampFormatterHHmmss.string(from:  Date(timeIntervalSince1970: self))
     }
     
-    func timeStampHHmmFormatter() -> String {
+    public func timeStampHHmmFormatter() -> String {
         return timeStampFormatterHHmmss.string(from: Date(timeIntervalSince1970: self))
     }
     
-    func ToHHmmssString() -> String {
+    public func ToHHmmssString() -> String {
         let time = Int(self)
         let seconds = time % 60
         let minutes = (time / 60) % 60
@@ -58,7 +58,7 @@ extension TimeInterval{
         return (returnedHs + returnedStringMin + returnedSeconds)
     }
     
-    func ToSmartHHMMssString() -> String {
+    public func ToSmartHHMMssString() -> String {
         var returnedStringMin : String
         var returnedStringHH : String
         let time = Int(self)
@@ -82,7 +82,7 @@ extension TimeInterval{
     
     
     
-    func ToFullHHMMssString() -> String {
+    public func ToFullHHMMssString() -> String {
         var returnedStringMin : String
         var returnedStringHH : String
         let time = Int(self)
@@ -104,7 +104,7 @@ extension TimeInterval{
         return (returnedStringHH + returnedStringMin + returnedSeconds)
     }
     
-    func ToMMssStringWatch() -> String {
+    public func ToMMssStringWatch() -> String {
         let time = Int(self)
         let seconds = time % 60
         let minutes = (time / 60) % 60
@@ -114,7 +114,7 @@ extension TimeInterval{
     }
     
     
-    func ToFullText() -> String {
+    public func ToFullText() -> String {
         let time = Int(self)
         let milliSeconds = String(Int((self.truncatingRemainder(dividingBy: 1)) * 1000))
         let seconds = String(time % 60)
@@ -123,7 +123,7 @@ extension TimeInterval{
         return (hours + ":" + minutes + ":" + seconds + ":" + milliSeconds)
     }
     
-    func ToHHmmss() -> String {
+    public func ToHHmmss() -> String {
         let time = Int(self)
         let seconds = String(time % 60)
         let minutes = String((time / 60) % 60)
@@ -131,14 +131,14 @@ extension TimeInterval{
         return (hours + ":" + minutes + ":" + seconds )
     }
     
-    func ToHHmm() -> String {
+    public func ToHHmm() -> String {
         let time = Int(self)
         let minutes = String((time / 60) % 60)
         let hours   = String(time / 3600)
         return (hours + " hs : " + minutes + " min")
     }
     
-    func toHistoryViewFormat() -> String {
+    public func toHistoryViewFormat() -> String {
         let dateTmp = Date(timeIntervalSince1970: self)
         return dateTmp.returnDDmmYY()
     }
@@ -153,52 +153,52 @@ extension Date {
     //    Date.tomorrow.month   // 10
     //    Date().isLastDayOfMonth  // false
     
-    static var yesterday: Date { return Date().dayBefore }
-    static var tomorrow:  Date { return Date().dayAfter }
-    static var todayDiary: Date { return Date().today }
-    static let stdDateFormat = "dd-MM-yyyy HH:mm:ss"
-    static let nightInterval = [21,8]
+    static public var yesterday: Date { return Date().dayBefore }
+    static public var tomorrow:  Date { return Date().dayAfter }
+    static public var todayDiary: Date { return Date().today }
+    static public let stdDateFormat = "dd-MM-yyyy HH:mm:ss"
+    static public let nightInterval = [21,8]
     
-    var dayBefore: Date {
+    public var dayBefore: Date {
         return Calendar.current.date(byAdding: .day, value: -1, to: noon)!
     }
-    var dayAfter: Date {
+    public var dayAfter: Date {
         return Calendar.current.date(byAdding: .day, value: 1, to: noon)!
     }
-    var noon: Date {
+    public var noon: Date {
         return Calendar.current.date(bySettingHour: 12, minute: 0, second: 0, of: self)!
     }
-    var today: Date {
+    public var today: Date {
         return Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: self)!
     }
-    var midnight: Date {
+    public var midnight: Date {
         return Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: self)!
     }
     
-    func toStdString() -> String {
+    public func toStdString() -> String {
         dateFormatter.dateFormat = Date.stdDateFormat
         return dateFormatter.string(from: self)
     }
     
-    var month: Int {
+    public var month: Int {
         return Calendar.current.component(.month,  from: self)
     }
-    var isLastDayOfMonth: Bool {
+    public var isLastDayOfMonth: Bool {
         return dayAfter.month != month
     }
     
-    func returnHHmm () -> String {
+    public func returnHHmm () -> String {
         dateFormatter.dateFormat = "HH:mm"
         return dateFormatter.string(from: self)
     }
     
-    static func fromStdDateString(_ dateString: String) -> Date? {
+    static public func fromStdDateString(_ dateString: String) -> Date? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = Date.stdDateFormat
         return dateFormatter.date(from: dateString)
     }
     
-    func returnDDmmYY () -> String {
+    public func returnDDmmYY () -> String {
         let components = Calendar.current.dateComponents([.day, .month, .year], from: self)
         let day = components.day!
         let month = components.month!
@@ -208,68 +208,68 @@ extension Date {
     }
     
     
-    func returnCloudPathForML () -> String{
+    public func returnCloudPathForML () -> String{
         dateFormatter.dateFormat = "/yyyy/MM/dd/"
         
         //        dateFormatter.dateFormat = "dd_MM_yyyy_HH_mm_ss"
         return dateFormatter.string(from: self)
     }
     
-    func addMonth(n: Int) -> Date {
+    public func addMonth(n: Int) -> Date {
         let cal = NSCalendar.current
         return cal.date(byAdding: .month, value: n, to: self)!
     }
-    func addDay(n: Int) -> Date {
+    public func addDay(n: Int) -> Date {
         let cal = NSCalendar.current
         return cal.date(byAdding: .day, value: n, to: self)!
     }
-    func addSec(n: Int) -> Date {
+    public func addSec(n: Int) -> Date {
         let cal = NSCalendar.current
         return cal.date(byAdding: .second, value: n, to: self)!
     }
-    func monthsAgo(n: Int) -> Date {
+    public func monthsAgo(n: Int) -> Date {
         let cal = NSCalendar.current
         return cal.date(byAdding: .month, value: -n, to: self)!
     }
-    func daysAgo(n: Int) -> Date {
+    public func daysAgo(n: Int) -> Date {
         let cal = NSCalendar.current
         return cal.date(byAdding: .day, value: -n, to: self)!
     }
     
-    func secsAgo(n: Int) -> Date {
+    public func secsAgo(n: Int) -> Date {
         let cal = NSCalendar.current
         return cal.date(byAdding: .second, value: -n, to: self)!
     }
     
-    func lastDays(_ n: Int) -> Date {
+    public func lastDays(_ n: Int) -> Date {
         let x = TimeInterval(n*24*60*60)
         let newTime = self.timeIntervalSince1970 - x
         return Date(timeIntervalSince1970: newTime)
     }
     
-    func deltaHours(_ n: Int) -> Date {
+    public func deltaHours(_ n: Int) -> Date {
         let x = TimeInterval(n*60*60)
         let newTime = self.timeIntervalSince1970 + x
         return Date(timeIntervalSince1970: newTime)
     }
     
-    func hours2Int() -> Int {
+    public func hours2Int() -> Int {
         dateFormatter.dateFormat = "HH"
         return Int(dateFormatter.string(from: self)) ?? 0
     }
     
-    func minutes() -> String {
+    public func minutes() -> String {
         dateFormatter.dateFormat = "mm"
         return dateFormatter.string(from: self)
     }
     
-    func seconds() -> String {
+    public func seconds() -> String {
         dateFormatter.dateFormat = "ss"
         return dateFormatter.string(from: self)
     }
     
     #if os(iOS)
-    func isNight() -> Bool {
+    public func isNight() -> Bool {
         var isNight = false
         if (self.hours2Int() < Date.nightInterval[1] || self.hours2Int() > Date.nightInterval[0] ) {
             isNight = true
@@ -277,7 +277,7 @@ extension Date {
         return isNight
     }
     
-    func isDay() -> Bool {
+    public func isDay() -> Bool {
         var isDay = false
         if (self.hours2Int() >= Date.nightInterval[1] || self.hours2Int() <= Date.nightInterval[0] ) {
             isDay = true
