@@ -28,8 +28,8 @@ public class MainClock: ObservableObject {
 
 // MARK: date and time formatters or modifiers
 
-let dateFormatter = DateFormatter()
-let timeStampFormatterHHmmss: DateFormatter = {
+public let dateFormatter = DateFormatter()
+public let timeStampFormatterHHmmss: DateFormatter = {
     let formatter = DateFormatter()
     formatter.dateFormat = "HH:mm:ss"
     return formatter
