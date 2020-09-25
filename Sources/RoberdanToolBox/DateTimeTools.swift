@@ -12,9 +12,9 @@ import SwiftUI
 
 @available(iOS 13.0, macOS 10.15, *)
 public class MainClock: ObservableObject {
-    static var shared = MainClock()
+    static public var shared = MainClock()
     
-    @Published var now : Date = Date()
+    @Published public var now : Date = Date()
     
     public init() {
         Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
