@@ -10,6 +10,7 @@ import SwiftUI
 
 @available(iOS 13.0, macOS 10.15, *)
 public struct CircleToggleStyle: ToggleStyle {
+    public init() {}
     public func makeBody(configuration: Configuration) -> some View {
         ZStack {
             configuration.label.hidden()
@@ -23,6 +24,7 @@ public struct CircleToggleStyle: ToggleStyle {
 }
 
 public struct HorizontalCheckmarkToggleStyle: ToggleStyle {
+    public init() {}
     public func makeBody(configuration: Configuration) -> some View {
         HStack {
             configuration.label
@@ -54,6 +56,7 @@ public struct HorizontalCheckmarkToggleStyle: ToggleStyle {
 
 
 public struct PowerToggleStyle: ToggleStyle {
+    public init() {}
     public func makeBody(configuration: Configuration) -> some View {
         HStack {
             configuration.label
@@ -89,6 +92,7 @@ public struct PowerToggleStyle: ToggleStyle {
 
 
 public struct VerticalPowerToggleStyle: ToggleStyle {
+    public init() {}
     public func makeBody(configuration: Configuration) -> some View {
         VStack {
             configuration.label
@@ -124,6 +128,12 @@ public struct ImageToggleStyle: ToggleStyle {
     
     var onImageName: String
     var offImageName: String
+    
+    public init() {
+        onImageName = ""
+        offImageName = ""
+    }
+    
     
     public func makeBody(configuration: Configuration) -> some View {
         HStack {
