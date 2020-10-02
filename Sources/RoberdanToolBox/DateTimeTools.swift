@@ -37,6 +37,13 @@ public let timeStampFormatterHHmmss: DateFormatter = {
 
 //extension for easily handle timeinterval outcomes in string and different formats
 extension TimeInterval{
+    
+    func timeClockFormatter() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
+        return formatter.string(from: Date(timeIntervalSince1970: self))
+    }
+    
     public func toTimeStampFormatter() -> String {
         return timeStampFormatterHHmmss.string(from:  Date(timeIntervalSince1970: self))
     }
