@@ -37,7 +37,6 @@ final public class MainDebugger: ObservableObject {
         writeLog(logString: newLog.debugString)
         if (self.isDebuggerActive) {
             //as it impacts UI let's secure it happens in the main queue
-            printToConsole(String(describing: newLog))
             DispatchQueue.main.async {
                 self.debugLogs.insert(newLog, at: 0)
             }
