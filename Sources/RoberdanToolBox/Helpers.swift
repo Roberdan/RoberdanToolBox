@@ -6,6 +6,7 @@
 //
 
 import Foundation
+@available(iOS 13.0, macOS 10.15, watchOS 6.0, *)
 
 extension Double {
     public func convert(fromRange: (Double, Double), toRange: (Double, Double)) -> Double {

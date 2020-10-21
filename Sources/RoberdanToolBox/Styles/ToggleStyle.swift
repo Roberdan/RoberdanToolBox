@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-@available(iOS 13.0, macOS 10.15, *)
+@available(iOS 13.0, macOS 10.15, watchOS 6.0, *)
 public struct CircleToggleStyle: ToggleStyle {
     public init() {}
     public func makeBody(configuration: Configuration) -> some View {
@@ -22,7 +22,7 @@ public struct CircleToggleStyle: ToggleStyle {
         }
     }
 }
-
+@available(iOS 13.0, macOS 10.15, watchOS 6.0, *)
 public struct HorizontalCheckmarkToggleStyle: ToggleStyle {
     public init() {}
     public func makeBody(configuration: Configuration) -> some View {
@@ -54,7 +54,7 @@ public struct HorizontalCheckmarkToggleStyle: ToggleStyle {
 }
 
 
-
+@available(iOS 13.0, macOS 10.15, watchOS 6.0, *)
 public struct PowerToggleStyle: ToggleStyle {
     public init() {}
     public func makeBody(configuration: Configuration) -> some View {
@@ -90,6 +90,7 @@ public struct PowerToggleStyle: ToggleStyle {
 }
 
 
+@available(iOS 13.0, macOS 10.15, watchOS 6.0, *)
 
 public struct VerticalPowerToggleStyle: ToggleStyle {
     public init() {}
@@ -124,8 +125,8 @@ public struct VerticalPowerToggleStyle: ToggleStyle {
     }
 }
 
+@available(iOS 13.0, macOS 10.15, watchOS 6.0, *)
 public struct ImageToggleStyle: ToggleStyle {
-    
     var onImageName: String
     var offImageName: String
     

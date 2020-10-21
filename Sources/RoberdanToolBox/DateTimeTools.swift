@@ -10,7 +10,7 @@ import SwiftUI
 // that's the main clock across the app as singleton.
 // it simply publish a value of type Date called "now"
 
-@available(iOS 13.0, macOS 10.15, *)
+@available(iOS 13.0, macOS 10.15, watchOS 6.0, *)
 public class MainClock: ObservableObject {
     static public var shared = MainClock()
     
@@ -27,7 +27,7 @@ public class MainClock: ObservableObject {
 
 
 // MARK: date and time formatters or modifiers
-
+@available(iOS 13.0, macOS 10.15, watchOS 6.0, *)
 public let dateFormatter = DateFormatter()
 public let timeStampFormatterHHmmss: DateFormatter = {
     let formatter = DateFormatter()
@@ -36,8 +36,8 @@ public let timeStampFormatterHHmmss: DateFormatter = {
 }()
 
 //extension for easily handle timeinterval outcomes in string and different formats
+@available(iOS 13.0, macOS 10.15, watchOS 6.0, *)
 extension TimeInterval{
-    
     public func timeClockFormatter() -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm"
@@ -152,6 +152,7 @@ extension TimeInterval{
 }
 
 // it enables to easily have date in string formats
+@available(iOS 13.0, macOS 10.15, watchOS 6.0, *)
 extension Date {
     //    Date.yesterday    // "Oct 28, 2018 at 12:00 PM"
     //    Date()            // "Oct 29, 2018 at 11:01 AM"

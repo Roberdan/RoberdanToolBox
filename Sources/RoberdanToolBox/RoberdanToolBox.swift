@@ -1,3 +1,3 @@
 struct RoberdanToolBox {
-    var text = "Hello, World!"
+    var text = "(c) FightTheStroke.org"
 }

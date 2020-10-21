@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-@available(iOS 13.0, macOS 10.15, *)
+@available(iOS 13.0, macOS 10.15, watchOS 6.0, *)
 public struct SquishableButtonStyle: ButtonStyle {
     var fadeOnPress = true
     
