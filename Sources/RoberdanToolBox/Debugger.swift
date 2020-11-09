@@ -18,7 +18,7 @@ public struct DebugLog: Codable, Hashable {
 
 @available(iOS 13.0, macOS 10.15, watchOS 6.0, *)
 final public class MainDebugger: ObservableObject {
-    static var shared = MainDebugger(true)
+    public static var shared = MainDebugger(true)
     
     @Published public var debugLogs : [DebugLog]
     private var isDebuggerActive : Bool
