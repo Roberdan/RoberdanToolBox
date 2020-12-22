@@ -14,16 +14,18 @@ import SwiftUI
 public struct OnboardingView: View {
     public var onboardingCards: [OnboardingCard]
     public var startMsg: String
+    public var cardBackGroundUIColor: UIColor
     
-    public init(onboardingCards: [OnboardingCard], startMsg: String) {
+    public init(onboardingCards: [OnboardingCard], startMsg: String, cardBackGroundUIColor: UIColor) {
         self.onboardingCards = onboardingCards
         self.startMsg = startMsg
+        self.cardBackGroundUIColor = cardBackGroundUIColor
     }
 
     public var body: some View {
         TabView {
             ForEach(onboardingCards) { item in
-                OnboardingCardView(card: item, startMsg: startMsg)
+                OnboardingCardView(card: item, startMsg: startMsg, cardBackGroundUIColor: cardBackGroundUIColor)
             }
         }
         .tabViewStyle(PageTabViewStyle())
@@ -34,6 +36,7 @@ public struct OnboardingView: View {
 public struct OnboardingCardView: View {
     public var card: OnboardingCard
     public var startMsg: String
+    public var cardBackGroundUIColor: UIColor
     
     @State private var isAnimating: Bool = false
 
@@ -76,7 +79,7 @@ public struct OnboardingCardView: View {
 
                 if card.form != nil {
                     card.form
-                        .background(Color(UIColor.tertiarySystemBackground).clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous)))
+                        .background(Color(cardBackGroundUIColor).clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous)))
                         .padding()
 
                 }
