@@ -6,7 +6,6 @@
 //
 
 #if !os(watchOS)
-
 import Foundation
 import SwiftUI
 import MessageUI
@@ -14,7 +13,10 @@ import MessageUI
 public struct DebugLogsView: View {
     @ObservedObject var myDebugger: MainDebugger = MainDebugger.shared
     @State var result: Result<MFMailComposeResult, Error>?
-    @State var isShowingMailView = false
+    @State var isShowingMailView: Bool = false
+    
+    public init() {}
+    
     public var body: some View {
         VStack {
             HStack {
