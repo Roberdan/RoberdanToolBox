@@ -12,8 +12,6 @@ import UIKit
 
 @available(iOS 13.0, macOS 10.15, *)
 public struct MailView: UIViewControllerRepresentable {
-    public var mainDebugger: MainDebugger = MainDebugger.shared
-
     @Environment(\.presentationMode) var presentation
     @Binding var result: Result<MFMailComposeResult, Error>?
 
@@ -53,16 +51,16 @@ public struct MailView: UIViewControllerRepresentable {
         mailViewController.setMessageBody("<p>Feedback on MirrorHR</p>", isHTML: true)
         mailViewController.mailComposeDelegate = context.coordinator
 
-        mainDebugger.exportLogFile()
+        MainDebugger.shared.exportLogFile()
         guard let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first
         else {
-            mainDebugger.append("Failed to search through directories")
+            MainDebugger.shared.append("Failed to search through directories")
             return mailViewController
         }
         let fileName = "LogTest.json"
         guard let logPath = NSURL(fileURLWithPath: path).appendingPathComponent(fileName)
         else {
-            mainDebugger.append("Failed create logFile path URL")
+            MainDebugger.shared.append("Failed create logFile path URL")
             return mailViewController
         }
         if let data = NSData(contentsOfFile: logPath.path) {
