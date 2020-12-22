@@ -13,7 +13,7 @@ import UIKit
 @available(iOS 13.0, macOS 10.15, *)
 public struct MailView: UIViewControllerRepresentable {
     @Environment(\.presentationMode) var presentation
-    @Binding var result: Result<MFMailComposeResult, Error>?
+    @Binding public var result: Result<MFMailComposeResult, Error>?
 
     public class Coordinator: NSObject, MFMailComposeViewControllerDelegate {
         @Binding var presentation: PresentationMode
