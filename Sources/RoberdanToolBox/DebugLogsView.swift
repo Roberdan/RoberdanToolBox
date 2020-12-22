@@ -11,11 +11,11 @@ import Foundation
 import SwiftUI
 import MessageUI
 
-struct DebugLogsView: View {
+public struct DebugLogsView: View {
     @ObservedObject var myDebugger: MainDebugger = MainDebugger.shared
     @State var result: Result<MFMailComposeResult, Error>?
     @State var isShowingMailView = false
-    var body: some View {
+    public var body: some View {
         VStack {
             HStack {
                 Button("Share a feedback", action: {
@@ -35,26 +35,26 @@ struct DebugLogsView: View {
     }
 }
 
-struct DebuggerLogsView: View {
+public struct DebuggerLogsView: View {
     @ObservedObject var myDebugger: MainDebugger = MainDebugger.shared
 
-    var body: some View {
+    public var body: some View {
         return List(myDebugger.debugLogs.reversed(), id: \.self) { logs in
             LogsRow(logs: logs)
         }
     }
 }
 
-struct DebugLogsView_Previews: PreviewProvider {
-    static var previews: some View {
+public struct DebugLogsView_Previews: PreviewProvider {
+    public static var previews: some View {
         DebugLogsView()
     }
 }
 
-struct LogsRow: View {
+public struct LogsRow: View {
     var logs: DebugLog
 
-    var body: some View {
+    public var body: some View {
         HStack {
             Text("\(logs.debugTimeStamp.toTimeStampFormatter())")
             Text("\(logs.debugString)")
