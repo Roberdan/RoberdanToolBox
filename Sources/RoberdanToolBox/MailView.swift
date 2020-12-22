@@ -6,7 +6,9 @@
 //
 
 import SwiftUI
+#if !os(watchOS)
 import MessageUI
+#endif
 import UIKit
 
 @available(iOS 13.0, macOS 10.15, *)
