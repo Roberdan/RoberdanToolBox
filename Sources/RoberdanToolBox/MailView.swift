@@ -14,9 +14,20 @@ import UIKit
 public struct MailView: UIViewControllerRepresentable {
     @Environment(\.presentationMode) var presentation
     @Binding public var result: Result<MFMailComposeResult, Error>?
+    public var attachSharedMainDebuggerLog: Bool?
+    public var recipients: [String]?
+    public var subject: String?
+    public var messageBody: String?
     
-    public init(result: Binding<Result<MFMailComposeResult, Error>?>) {
-        _result = result
+    public init(result: Binding<Result<MFMailComposeResult, Error>?>, attachSharedMainDebuggerLog: Bool?,
+        recipients: [String]?,
+        subject: String?,
+        messageBody: String?) {
+            _result = result
+            self.attachSharedMainDebuggerLog = attachSharedMainDebuggerLog
+            self.recipients = recipients
+            self.subject = subject
+            self.messageBody = messageBody
     }
     
     public class Coordinator: NSObject, MFMailComposeViewControllerDelegate {
@@ -50,26 +61,29 @@ public struct MailView: UIViewControllerRepresentable {
 
     public func makeUIViewController(context: UIViewControllerRepresentableContext<MailView>) -> MFMailComposeViewController {
         let mailViewController = MFMailComposeViewController()
-        mailViewController.setToRecipients(["roberdan@fightthestroke.org"])
-        mailViewController.setSubject("Feedback on MirrorHR")
-        mailViewController.setMessageBody("<p>Feedback on MirrorHR</p>", isHTML: true)
+        mailViewController.setToRecipients(recipients)
+        mailViewController.setSubject(subject ?? "")
+        mailViewController.setMessageBody(messageBody ?? "", isHTML: true)
         mailViewController.mailComposeDelegate = context.coordinator
 
-        MainDebugger.shared.exportLogFile()
-        guard let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first
-        else {
-            MainDebugger.shared.append("Failed to search through directories")
-            return mailViewController
+        if attachSharedMainDebuggerLog ?? false {
+            MainDebugger.shared.exportLogFile()
+            guard let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first
+            else {
+                MainDebugger.shared.append("Failed to search through directories")
+                return mailViewController
+            }
+            let fileName = "LogTest.json"
+            guard let logPath = NSURL(fileURLWithPath: path).appendingPathComponent(fileName)
+            else {
+                MainDebugger.shared.append("Failed create logFile path URL")
+                return mailViewController
+            }
+            if let data = NSData(contentsOfFile: logPath.path) {
+                mailViewController.addAttachmentData(data as Data, mimeType: "application/json", fileName: fileName)
+            }
         }
-        let fileName = "LogTest.json"
-        guard let logPath = NSURL(fileURLWithPath: path).appendingPathComponent(fileName)
-        else {
-            MainDebugger.shared.append("Failed create logFile path URL")
-            return mailViewController
-        }
-        if let data = NSData(contentsOfFile: logPath.path) {
-            mailViewController.addAttachmentData(data as Data, mimeType: "application/json", fileName: fileName)
-        }
+        
 
         return mailViewController
     }
