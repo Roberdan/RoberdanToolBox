@@ -16,8 +16,8 @@ public struct MailView: UIViewControllerRepresentable {
     @Binding public var result: Result<MFMailComposeResult, Error>?
 
     public class Coordinator: NSObject, MFMailComposeViewControllerDelegate {
-        @Binding var presentation: PresentationMode
-        @Binding var result: Result<MFMailComposeResult, Error>?
+        @Binding public var presentation: PresentationMode
+        @Binding public var result: Result<MFMailComposeResult, Error>?
 
         public init(presentation: Binding<PresentationMode>,
              result: Binding<Result<MFMailComposeResult, Error>?>) {
