@@ -12,7 +12,7 @@ import UIKit
 
 @available(iOS 13.0, macOS 10.15, *)
 public struct MailView: UIViewControllerRepresentable {
-    var mainDebugger: MainDebugger = MainDebugger.shared
+    public var mainDebugger: MainDebugger = MainDebugger.shared
 
     @Environment(\.presentationMode) var presentation
     @Binding var result: Result<MFMailComposeResult, Error>?
