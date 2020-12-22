@@ -1,6 +1,7 @@
 # RoberdanToolBox
 
-A set of common SWIFT extensions, struct and classes for general purpose
+A set of common SWIFT extensions, struct and classes for general purpose.
+Just add https://github.com/Roberdan/RoberdanToolBox to your project via Swift Package Manager 
 
 struct CardActionButton: View
 struct SquishableButtonStyle: ButtonStyle
@@ -14,5 +15,6 @@ ImageToggleStyle: ToggleStyle
 rgbComponents, hsbComponents, htmlRGBColor, htmlRGBaColor, toHexString, toUint, toUint, codable, decodable: UIColor extensions
 MainClock: ObservableObject
 various date & time formatter into strings
-MainDebugger, debuglogs
+MainDebugger, debuglogs, debuglogs views for IoS and WatchOs
+Onboarding main classes
 etc
