@@ -5,7 +5,7 @@
 //  Created by Roberto D’Angelo on 22/12/20.
 //
 
-#if os(iOS)
+#if !os(watchOS)
 import SwiftUI
 import MessageUI
 import UIKit
