@@ -53,14 +53,4 @@ public struct DebugLogsView_Previews: PreviewProvider {
     }
 }
 
-public struct LogsRow: View {
-    var logs: DebugLog
-
-    public var body: some View {
-        HStack {
-            Text("\(logs.debugTimeStamp.toTimeStampFormatter())")
-            Text("\(logs.debugString)")
-        }
-    }
-}
 #endif
