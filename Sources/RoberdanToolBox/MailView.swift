@@ -9,6 +9,7 @@ import SwiftUI
 import MessageUI
 import UIKit
 
+@available(iOS 13.0, macOS 10.15, *)
 public struct MailView: UIViewControllerRepresentable {
     var mainDebugger: MainDebugger = MainDebugger.shared
 
@@ -19,7 +20,7 @@ public struct MailView: UIViewControllerRepresentable {
         @Binding var presentation: PresentationMode
         @Binding var result: Result<MFMailComposeResult, Error>?
 
-        init(presentation: Binding<PresentationMode>,
+        public init(presentation: Binding<PresentationMode>,
              result: Binding<Result<MFMailComposeResult, Error>?>) {
             _presentation = presentation
             _result = result
