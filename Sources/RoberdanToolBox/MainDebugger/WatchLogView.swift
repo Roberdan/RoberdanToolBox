@@ -8,6 +8,8 @@
 import Foundation
 import SwiftUI
 
+@available(iOS 13.0, macOS 10.15, watchOS 6.0, *)
+
 public struct WatchLogView: View {
     @ObservedObject var myDebugger: MainDebugger = MainDebugger.shared
    
