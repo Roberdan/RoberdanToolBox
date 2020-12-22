@@ -12,6 +12,7 @@ import MessageUI
 import UIKit
 
 @available(iOS 13.0, macOS 10.15, *)
+#if !os(watchOS)
 public struct MailView: UIViewControllerRepresentable {
     var mainDebugger: MainDebugger = MainDebugger.shared
 
@@ -78,3 +79,4 @@ public struct MailView: UIViewControllerRepresentable {
 
     }
 }
+#endif
