@@ -5,14 +5,12 @@
 //  Created by Roberto D’Angelo on 22/12/20.
 //
 
+#if os(iOS)
 import SwiftUI
-#if !os(watchOS)
 import MessageUI
-#endif
 import UIKit
 
 @available(iOS 13.0, macOS 10.15, *)
-#if !os(watchOS)
 public struct MailView: UIViewControllerRepresentable {
     var mainDebugger: MainDebugger = MainDebugger.shared
 
