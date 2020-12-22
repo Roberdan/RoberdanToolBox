@@ -139,4 +139,15 @@ public struct OnboardingCard: Identifiable {
     public var form: AnyView?
     public var isLast: Bool
     public var alignTop: Bool
+    
+    public init(title: String, headline: String, image: String, gradientColors: [Color], description: String, form: AnyView?, isLast: Bool, alignTop: Bool) {
+        self.title = title
+        self.alignTop = alignTop
+        self.description = description
+        self.headline = headline
+        self.image = image
+        self.gradientColors = gradientColors
+        self.form = form
+        self.isLast = isLast
+    }
 }
