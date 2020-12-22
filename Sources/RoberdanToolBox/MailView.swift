@@ -14,7 +14,11 @@ import UIKit
 public struct MailView: UIViewControllerRepresentable {
     @Environment(\.presentationMode) var presentation
     @Binding public var result: Result<MFMailComposeResult, Error>?
-
+    
+    public init(result: Binding<Result<MFMailComposeResult, Error>?>) {
+        _result = result
+    }
+    
     public class Coordinator: NSObject, MFMailComposeViewControllerDelegate {
         @Binding public var presentation: PresentationMode
         @Binding public var result: Result<MFMailComposeResult, Error>?
