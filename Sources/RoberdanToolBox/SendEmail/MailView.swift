@@ -11,6 +11,31 @@ import MessageUI
 import UIKit
 
 @available(iOS 13.0, macOS 10.15, *)
+public struct ShareAFeedbackView: View {
+    @State var result: Result<MFMailComposeResult, Error>?
+    @State var isShowingMailView: Bool = false
+
+    public init() {}
+
+    public var body: some View {
+        VStack {
+            HStack {
+                Button("Share a feedback", action: {
+                    self.isShowingMailView.toggle()
+                })
+                .disabled(!MFMailComposeViewController.canSendMail())
+                .sheet(isPresented: $isShowingMailView) {
+                    MailView(result: self.$result,
+                             attachSharedMainDebuggerLog: false,
+                             recipients: ["roberdan@fightthestroke.org"],
+                             subject: "MirrorHR Feedback",
+                             messageBody: "<p>Feedback on MirrorHR</p>")
+                }
+            }
+        }
+    }
+}
+
 public struct MailView: UIViewControllerRepresentable {
     @Environment(\.presentationMode) var presentation
     @Binding public var result: Result<MFMailComposeResult, Error>?
