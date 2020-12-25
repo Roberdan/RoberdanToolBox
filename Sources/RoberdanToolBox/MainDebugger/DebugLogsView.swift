@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-#if !os(macOS)
+#if os(iOS)
 import MessageUI
 
 @available(iOS 14.0, *)
