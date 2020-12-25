@@ -52,10 +52,4 @@ public struct DebuggerLogsView: View {
     }
 }
 
-@available(iOS 14.0, macOS 11, watchOS 7.0, *)
-public struct DebugLogsView_Previews: PreviewProvider {
-    public static var previews: some View {
-        DebugLogsView()
-    }
-}
 

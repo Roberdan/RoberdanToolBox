@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 
-@available(iOS 14.0, macOS 11, *)
+@available(iOS 14.0, *)
 public struct OnboardingView: View {
     public var onboardingCards: [OnboardingCard]
     public var startMsg: String
@@ -32,7 +32,7 @@ public struct OnboardingView: View {
     }
 }
 
-@available(iOS 14.0, macOS 11, *)
+@available(iOS 14.0, *)
 public struct OnboardingCardView: View {
     public var card: OnboardingCard
     public var startMsg: String
@@ -104,7 +104,7 @@ public struct OnboardingCardView: View {
     }
 }
 
-@available(iOS 14.0, macOS 11, *)
+@available(iOS 14.0, *)
 public struct StartButtonView: View {
     @AppStorage("isOnboarding") var isOnboarding: Bool?
     public var startMsg: String
@@ -130,7 +130,7 @@ public struct StartButtonView: View {
     }
 }
 
-@available(iOS 14.0, macOS 11, *)
+@available(iOS 14.0, *)
 public struct OnboardingCard: Identifiable {
     public var id = UUID()
     public var title: String
