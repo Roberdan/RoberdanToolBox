@@ -5,9 +5,11 @@
 //  Created by Roberto D’Angelo on 25/09/2020.
 //
 
+#if !os(macOS)
 import Foundation
 import SwiftUI
-@available(iOS 13.0, macOS 10.15, watchOS 6.0, *)
+
+@available(iOS 14.0, watchOS 7.0, *)
 extension UIColor {
     public var rgbComponents:(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
         var r:CGFloat = 0
@@ -46,7 +48,7 @@ extension UIColor {
     //    let myDarkGrayColor = UIColor.darkGrayColor().toJson
 }
 
-@available(iOS 13.0, macOS 10.15, watchOS 6.0, *)
+@available(iOS 14.0, watchOS 7.0, *)
 extension UIColor {
     convenience public init(hexString: String, alpha: CGFloat = 1.0) {
         let hexString: String = hexString.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
@@ -88,7 +90,7 @@ extension UIColor {
     }
 }
 
-@available(iOS 13.0, macOS 10.15, watchOS 6.0, *)
+@available(iOS 14.0, watchOS 7.0, *)
 extension UIColor {
     public var color: Color {
         get {
@@ -128,7 +130,7 @@ extension UIColor {
     }
 }
 
-@available(iOS 13.0, macOS 10.15, watchOS 6.0, *)
+@available(iOS 14.0, watchOS 7.0, *)
 extension Color {
     public func uiColor() -> UIColor {
         let components = self.components()
@@ -178,19 +180,20 @@ extension Color {
 
 /// Allows you to use Swift encoders and decoders to process UIColor
 
-@available(iOS 13.0, macOS 10.15, watchOS 6.0, *)
+@available(iOS 14.0, watchOS 7.0, *)
 public extension UIColor {
     func codable() -> CodableColor {
         return CodableColor(color: self)
     }
 }
 
+@available(iOS 14.0, watchOS 7.0, *)
 public struct CodableColor {
     /// The color to be (en/de)coded
     let color: UIColor
 }
 
-@available(iOS 13.0, macOS 10.15, watchOS 6.0, *)
+@available(iOS 14.0, watchOS 7.0, *)
 extension CodableColor: Encodable {
     public func encode(to encoder: Encoder) throws {
         let nsCoder = NSKeyedArchiver(requiringSecureCoding: true)
@@ -200,7 +203,7 @@ extension CodableColor: Encodable {
     }
 }
 
-@available(iOS 13.0, macOS 10.15, watchOS 6.0, *)
+@available(iOS 14.0, watchOS 7.0, *)
 extension CodableColor: Decodable {
     public init(from decoder: Decoder) throws {
         var container = try decoder.unkeyedContainer()
@@ -214,3 +217,4 @@ extension CodableColor: Decodable {
     }
 }
 
+#endif

@@ -6,8 +6,8 @@
 //
 
 import Foundation
-@available(iOS 13.0, macOS 10.15, watchOS 6.0, *)
 
+@available(iOS 14.0, macOS 11, watchOS 7.0, *)
 extension Double {
     public func convert(fromRange: (Double, Double), toRange: (Double, Double)) -> Double {
         // Example: if self = 1, fromRange = (0,2), toRange = (10,12) -> solution = 11
