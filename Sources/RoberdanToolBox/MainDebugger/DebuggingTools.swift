@@ -6,7 +6,7 @@
 //
 
 import Foundation
-@available(iOS 13.0, macOS 10.15, watchOS 6.0, *)
+@available(iOS 14.0, macOS 11, watchOS 7.0, *)
 
 //MARK: PrintToConsole - use it instead than print as it runs only in debug mode and not on release
 public func printToConsole(_ message : Any) {
