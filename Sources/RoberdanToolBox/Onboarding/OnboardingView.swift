@@ -5,9 +5,9 @@
 //  Created by Roberto D’Angelo on 22/12/20.
 //
 
+#if os(iOS)
 import Foundation
 import SwiftUI
-
 
 @available(iOS 14.0, *)
 public struct OnboardingView: View {
@@ -153,3 +153,4 @@ public struct OnboardingCard: Identifiable {
         self.isLast = isLast
     }
 }
+#endif
