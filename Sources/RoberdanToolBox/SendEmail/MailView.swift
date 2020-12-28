@@ -10,7 +10,7 @@ import SwiftUI
 import MessageUI
 import UIKit
 
-@available(iOS 14.0, *)
+@available(iOS 13.0, macOS 10.15, *)
 public struct ShareAFeedbackView: View {
     @State var result: Result<MFMailComposeResult, Error>?
     @State var isShowingMailView: Bool = false
@@ -36,7 +36,6 @@ public struct ShareAFeedbackView: View {
     }
 }
 
-@available(iOS 14.0, *)
 public struct MailView: UIViewControllerRepresentable {
     @Environment(\.presentationMode) var presentation
     @Binding public var result: Result<MFMailComposeResult, Error>?

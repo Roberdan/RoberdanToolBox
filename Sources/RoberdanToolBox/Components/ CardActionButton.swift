@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-@available(iOS 14.0, macOS 11, *)
+@available(iOS 13.0, macOS 10.15, watchOS 6.0, *)
 struct CardActionButton: View {
     var label: String
     var systemImage: String
@@ -28,7 +28,6 @@ struct CardActionButton: View {
     }
 }
 
-@available(iOS 14.0, macOS 11, *)
 struct CardActionButton_Previews: PreviewProvider {
     static var previews: some View {
         CardActionButton(label: "Close", systemImage: "xmark", action: {})

@@ -10,13 +10,13 @@ import Foundation
 import SwiftUI
 
 //TODO: handle errors from the code, like events, errors etc
-@available(iOS 14.0, macOS 11, watchOS 7.0, *)
+@available(iOS 13.0, macOS 10.15, watchOS 6.0, *)
 public struct DebugLog: Codable, Hashable {
     public var debugString : String = ""
     public var debugTimeStamp : TimeInterval = Date().timeIntervalSince1970
 }
 
-@available(iOS 14.0, macOS 11, watchOS 7.0, *)
+@available(iOS 13.0, macOS 10.15, watchOS 6.0, *)
 final public class MainDebugger: ObservableObject {
     public static var shared = MainDebugger(true)
     
@@ -118,7 +118,7 @@ final public class MainDebugger: ObservableObject {
     }
 }
 
-@available(iOS 14.0, macOS 11, watchOS 7.0, *)
+@available(iOS 13.0, macOS 10.15, watchOS 6.0, *)
 struct DebugView: View {
     @ObservedObject var mainDebugger = MainDebugger.shared
     var appnName : String
@@ -137,7 +137,6 @@ struct DebugView: View {
     }
 }
 
-@available(iOS 14.0, macOS 11, watchOS 7.0, *)
 struct DebugView_Previews: PreviewProvider {
     static var previews: some View {
         DebugView(appnName: "RoberdanToolBox", buildnumber: "1.0")

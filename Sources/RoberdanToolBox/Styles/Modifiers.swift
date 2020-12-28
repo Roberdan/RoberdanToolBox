@@ -5,11 +5,11 @@
 //  Created by Roberto D’Angelo on 25/09/2020.
 //
 
-#if os(iOS)
 import Foundation
 import SwiftUI
 
-@available(iOS 13.0, *)
+
+@available(iOS 13.0, macOS 10.15, watchOS 6.0, *)
 extension View {
     public func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
         
@@ -17,7 +17,6 @@ extension View {
     }
 }
 
-@available(iOS 13.0, *)
 public struct RoundedCorner: Shape {
     var radius: CGFloat = .infinity
     var corners: UIRectCorner = .allCorners
@@ -27,4 +26,3 @@ public struct RoundedCorner: Shape {
         return Path(path.cgPath)
     }
 }
-#endif
