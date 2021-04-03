@@ -10,13 +10,13 @@ import Foundation
 import SwiftUI
 
 //TODO: handle errors from the code, like events, errors etc
-@available(iOS 14.0, macOS 11, watchOS 7.0, *)
+@available(iOS 13.0, macOS 10.15, watchOS 6.0, *)
 public struct DebugLog: Codable, Hashable {
     public var debugString : String = ""
     public var debugTimeStamp : TimeInterval = Date().timeIntervalSince1970
 }
 
-@available(iOS 14.0, macOS 11, watchOS 7.0, *)
+@available(iOS 13.0, macOS 10.15, watchOS 6.0, *)
 final public class MainDebugger: ObservableObject {
     public static var shared = MainDebugger(true)
     
@@ -118,27 +118,31 @@ final public class MainDebugger: ObservableObject {
     }
 }
 
-@available(iOS 14.0, macOS 11, watchOS 7.0, *)
+@available(iOS 13.0, macOS 10.15, watchOS 6.0, *)
 struct DebugView: View {
     @ObservedObject var mainDebugger = MainDebugger.shared
     var appnName : String
     var buildnumber : String
     
     var body: some View {
-        LazyVStack {
-            Text(appnName + " (" + buildnumber + ")")
-            
-            List {
-                ForEach (mainDebugger.debugLogs, id: \.self) {log in
-                    Text("\(Date.init(timeIntervalSince1970: log.debugTimeStamp).toStdString()) -> \(log.debugString)")
+        if #available(OSX 11.0, *) {
+            LazyVStack {
+                Text(appnName + " (" + buildnumber + ")")
+                
+                List {
+                    ForEach (mainDebugger.debugLogs, id: \.self) {log in
+                        Text("\(Date.init(timeIntervalSince1970: log.debugTimeStamp).toStdString()) -> \(log.debugString)")
+                    }
                 }
             }
+        } else {
+            // Fallback on earlier versions
         }
     }
 }
 
-@available(iOS 14.0, macOS 11, watchOS 7.0, *)
 struct DebugView_Previews: PreviewProvider {
+    @available(OSX 10.15, *)
     static var previews: some View {
         DebugView(appnName: "RoberdanToolBox", buildnumber: "1.0")
     }

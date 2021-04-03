@@ -5,13 +5,11 @@
 //  Created by Roberto D’Angelo on 22/12/20.
 //
 
+#if os(iOS)
 import Foundation
 import SwiftUI
-
-#if os(iOS)
 import MessageUI
 
-@available(iOS 14.0, *)
 public struct DebugLogsView: View {
     @ObservedObject var myDebugger: MainDebugger = MainDebugger.shared
     @State var result: Result<MFMailComposeResult, Error>?
@@ -38,10 +36,7 @@ public struct DebugLogsView: View {
         }
     }
 }
-#endif
 
-
-@available(iOS 14.0, macOS 11, watchOS 7.0, *)
 public struct DebuggerLogsView: View {
     @ObservedObject var myDebugger: MainDebugger = MainDebugger.shared
 
@@ -52,4 +47,10 @@ public struct DebuggerLogsView: View {
     }
 }
 
+public struct DebugLogsView_Previews: PreviewProvider {
+    public static var previews: some View {
+        DebugLogsView()
+    }
+}
 
+#endif

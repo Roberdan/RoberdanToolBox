@@ -8,7 +8,8 @@
 import Foundation
 import SwiftUI
 
-@available(iOS 14.0, macOS 11, watchOS 7.0, *)
+@available(iOS 13.0, macOS 10.15, watchOS 6.0, *)
+
 public struct WatchLogView: View {
     @ObservedObject var myDebugger: MainDebugger = MainDebugger.shared
    
@@ -21,7 +22,7 @@ public struct WatchLogView: View {
     }
 }
 
-@available(iOS 14.0, macOS 11, watchOS 7.0, *)
+@available(OSX 10.15, *)
 public struct LogsRow: View {
     var logs: DebugLog
 
