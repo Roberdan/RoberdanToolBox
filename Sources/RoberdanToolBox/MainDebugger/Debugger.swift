@@ -125,19 +125,24 @@ struct DebugView: View {
     var buildnumber : String
     
     var body: some View {
-        LazyVStack {
-            Text(appnName + " (" + buildnumber + ")")
-            
-            List {
-                ForEach (mainDebugger.debugLogs, id: \.self) {log in
-                    Text("\(Date.init(timeIntervalSince1970: log.debugTimeStamp).toStdString()) -> \(log.debugString)")
+        if #available(OSX 11.0, *) {
+            LazyVStack {
+                Text(appnName + " (" + buildnumber + ")")
+                
+                List {
+                    ForEach (mainDebugger.debugLogs, id: \.self) {log in
+                        Text("\(Date.init(timeIntervalSince1970: log.debugTimeStamp).toStdString()) -> \(log.debugString)")
+                    }
                 }
             }
+        } else {
+            // Fallback on earlier versions
         }
     }
 }
 
 struct DebugView_Previews: PreviewProvider {
+    @available(OSX 10.15, *)
     static var previews: some View {
         DebugView(appnName: "RoberdanToolBox", buildnumber: "1.0")
     }

@@ -22,6 +22,7 @@ public struct WatchLogView: View {
     }
 }
 
+@available(OSX 10.15, *)
 public struct LogsRow: View {
     var logs: DebugLog
 

@@ -8,6 +8,8 @@
 import Foundation
 import SwiftUI
 
+#if os(iOS)
+
 @available(iOS 13.0, macOS 10.15, watchOS 6.0, *)
 struct CardActionButton: View {
     var label: String
@@ -34,3 +36,5 @@ struct CardActionButton_Previews: PreviewProvider {
             .previewLayout(.sizeThatFits)
     }
 }
+
+#endif

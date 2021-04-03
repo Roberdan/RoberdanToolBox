@@ -8,8 +8,9 @@
 import Foundation
 import SwiftUI
 
+#if os(iOS)
 
-@available(iOS 13.0, macOS 10.15, *)
+@available(iOS 13.0, *)
 
 public struct OnboardingView: View {
     public var onboardingCards: [OnboardingCard]
@@ -151,3 +152,5 @@ public struct OnboardingCard: Identifiable {
         self.isLast = isLast
     }
 }
+
+#endif

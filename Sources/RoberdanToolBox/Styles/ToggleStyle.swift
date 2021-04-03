@@ -8,7 +8,9 @@
 import Foundation
 import SwiftUI
 
-@available(iOS 13.0, macOS 10.15, watchOS 6.0, *)
+#if os(iOS)
+
+@available(iOS 13.0, watchOS 6.0, *)
 public struct CircleToggleStyle: ToggleStyle {
     public init() {}
     public func makeBody(configuration: Configuration) -> some View {
@@ -156,3 +158,4 @@ public struct ImageToggleStyle: ToggleStyle {
     }
 }
 
+#endif
