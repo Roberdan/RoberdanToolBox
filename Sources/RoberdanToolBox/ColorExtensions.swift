@@ -5,21 +5,12 @@
 //  Created by Roberto D’Angelo on 25/09/2020.
 //
 
+#if os(iOS)
+
 import Foundation
 import SwiftUI
-#if os(OSX)
-    typealias Color = NSColor
-    typealias Image = NSImage
-#else
-    typealias Color = UIColor
-    typealias Image = UIImage
-#endif
-
-
-#if os(iOS)
 @available(iOS 13.0, macOS 10.15, watchOS 6.0, *)
-
-extension Color {
+extension UIColor {
     public var rgbComponents:(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
         var r:CGFloat = 0
         var g:CGFloat = 0
@@ -45,7 +36,6 @@ extension Color {
     public var htmlRGBColor:String {
         return String(format: "#%02x%02x%02x", Int(rgbComponents.red * 255), Int(rgbComponents.green * 255),Int(rgbComponents.blue * 255))
     }
-    
     public var toJson:String {
         return String(format: "#%02x%02x%02x", Int(rgbComponents.red * 255), Int(rgbComponents.green * 255),Int(rgbComponents.blue * 255))
     }
@@ -57,10 +47,9 @@ extension Color {
     //    let myLghtGrayColor = UIColor.lightGrayColor().toJson  //#aaaaaaff
     //    let myDarkGrayColor = UIColor.darkGrayColor().toJson
 }
-#endif
 
 @available(iOS 13.0, macOS 10.15, watchOS 6.0, *)
-extension Color {
+extension UIColor {
     convenience public init(hexString: String, alpha: CGFloat = 1.0) {
         let hexString: String = hexString.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         let scanner = Scanner(string: hexString)
@@ -101,9 +90,8 @@ extension Color {
     }
 }
 
-#if os(iOS)
-@available(iOS 13.0, watchOS 6.0, *)
-extension Color {
+@available(iOS 13.0, macOS 10.15, watchOS 6.0, *)
+extension UIColor {
     public var color: Color {
         get {
             let rgbColours = self.cgColor.components
@@ -141,13 +129,10 @@ extension Color {
         }
     }
 }
-#endif
 
 @available(iOS 13.0, macOS 10.15, watchOS 6.0, *)
 extension Color {
-    
-    #if os(iOS)
-    public func uiColor() -> Color {
+    public func uiColor() -> UIColor {
         let components = self.components()
         return UIColor(red: components.r, green: components.g, blue: components.b, alpha: components.a)
     }
@@ -167,7 +152,7 @@ extension Color {
         return (r, g, b, a)
     }
     
-    convenience init(hex: String) {
+    init(hex: String) {
         let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
         var int: UInt64 = 0
         Scanner(string: hex).scanHexInt64(&int)
@@ -191,22 +176,20 @@ extension Color {
             opacity: Double(a) / 255
         )
     }
-    #endif
 }
 
 /// Allows you to use Swift encoders and decoders to process UIColor
 
-#if os(iOS)
 @available(iOS 13.0, macOS 10.15, watchOS 6.0, *)
-public extension Color {
+public extension UIColor {
     func codable() -> CodableColor {
-        return CodableColor(from: self)
+        return CodableColor(color: self)
     }
 }
 
 public struct CodableColor {
     /// The color to be (en/de)coded
-    let color: Color
+    let color: UIColor
 }
 
 @available(iOS 13.0, macOS 10.15, watchOS 6.0, *)
@@ -225,11 +208,12 @@ extension CodableColor: Decodable {
         var container = try decoder.unkeyedContainer()
         let decodedData = try container.decode(Data.self)
         let nsCoder = try NSKeyedUnarchiver(forReadingFrom: decodedData)
-        guard let color = Color(coder: nsCoder) else {
+        guard let color = UIColor(coder: nsCoder) else {
             struct UnexpectedlyFoundNilError: Error {}
             throw UnexpectedlyFoundNilError()
         }
         self.color = color
     }
 }
+
 #endif
