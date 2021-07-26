@@ -7,6 +7,7 @@
 import Foundation
 import SwiftUI
 
+@available(iOS 15.0, macOS 12, watchOS 8, *)
 public struct Haptics {
     public static func giveHaptic() {
         let impactMed = UIImpactFeedbackGenerator(style: .medium)
