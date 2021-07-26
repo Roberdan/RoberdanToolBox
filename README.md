@@ -5,6 +5,7 @@ Just add https://github.com/Roberdan/RoberdanToolBox to your project via Swift P
 
 UIScreen Extensions (sizes, brightness etc)
 Background processing on DispatchQueue
+EndEditing
 struct CardActionButton: View
 struct SquishableButtonStyle: ButtonStyle
 cornerRadius: View extension
