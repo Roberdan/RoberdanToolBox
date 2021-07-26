@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-@available(iOS 13.0, macOS 10.15, watchOS 6.0, *)
+@available(iOS 13.0, *)
 extension UIScreen {
     public static let screenWidth = UIScreen.main.bounds.size.width
     public static let screenHeight = UIScreen.main.bounds.size.height
