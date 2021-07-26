@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 
+#if os(iOS)
 @available(iOS 13.0, *)
 extension UIScreen {
     public static let screenWidth = UIScreen.main.bounds.size.width
@@ -18,3 +19,4 @@ extension UIScreen {
         UIScreen.main.brightness = to
     }
 }
+#endif
