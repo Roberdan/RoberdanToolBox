@@ -8,9 +8,14 @@
 import Foundation
 import UIKit
 
+
 //hide keyboard on press outside
+#if os(iOS)
+@available(iOS 13.0, *)
 extension UIApplication {
     public func endEditing() {
         sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
+#endif
+
