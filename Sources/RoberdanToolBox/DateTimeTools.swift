@@ -167,6 +167,20 @@ extension Date {
     static public let stdDateFormat = "dd-MM-yyyy HH:mm:ss"
     static public let nightInterval = [21,8]
     
+    public var startOfDay: Date {
+         let calendar = Calendar.current
+         let unitFlags = Set<Calendar.Component>([.year, .month, .day])
+         let components = calendar.dateComponents(unitFlags, from: self)
+         return calendar.date(from: components)!
+    }
+
+    public var endOfDay: Date {
+         var components = DateComponents()
+         components.day = 1
+         let date = Calendar.current.date(byAdding: components, to: self.startOfDay)
+         return (date?.addingTimeInterval(-1))!
+     }
+    
     public var dayBefore: Date {
         return Calendar.current.date(byAdding: .day, value: -1, to: noon)!
     }
