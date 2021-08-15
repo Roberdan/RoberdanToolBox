@@ -19,7 +19,7 @@ public struct WatchLogView: View {
     }
 
     public var body: some View {
-        return List(myDebugger.debugLogs.reversed(), id: \.self) { logs in
+        return List(myDebugger.debugLogs, id: \.self) { logs in
             LogsRow(logs: logs)
         }
     }
