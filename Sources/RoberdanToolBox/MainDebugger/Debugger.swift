@@ -12,13 +12,13 @@ import SwiftUI
 //TODO: handle errors from the code, like events, errors etc
 @available(iOS 13.0, macOS 10.15, watchOS 6.0, *)
 public struct DebugLog: Codable, Hashable {
-    public var debugString : String = ""
-    public var debugTimeStamp : TimeInterval = Date().timeIntervalSince1970
+    public var debugString: String = ""
+    public var debugTimeStamp: TimeInterval = Date().timeIntervalSince1970
+    public var msgColor: Color
 }
 
 @available(iOS 13.0, macOS 10.15, watchOS 6.0, *)
 final public class MainDebugger: ObservableObject {
-    public static var shared = MainDebugger(true)
     
     @Published public var debugLogs : [DebugLog]
     private var isDebuggerActive : Bool
@@ -27,10 +27,11 @@ final public class MainDebugger: ObservableObject {
     public init(_ turnOn: Bool) {
         self.isDebuggerActive = turnOn
         self.debugLogs = []
+        public static var shared = MainDebugger(turnOn)
     }
     
-    public func append (_ msg: String) {
-        self.append(newLog: DebugLog(debugString: msg, debugTimeStamp: Date().timeIntervalSince1970))
+    public func append (_ msg: String, _ msgColor: Color) {
+        self.append(newLog: DebugLog(debugString: msg, debugTimeStamp: Date().timeIntervalSince1970), msgColor: msgColor)
         printToConsole(msg)
     }
     
