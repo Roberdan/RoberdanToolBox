@@ -36,7 +36,7 @@ public enum DebugMsgType: String {
         case .redFlag:
             return .red
         case .justALog:
-            return .black
+            return .primary
         case .command:
             return .green
         }
