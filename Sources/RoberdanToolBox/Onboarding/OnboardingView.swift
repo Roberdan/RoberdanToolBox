@@ -55,7 +55,7 @@ public struct OnboardingCardView: View {
                 }
 
                 // CARD: TITLE
-                Text(card.title)
+                Text(card.title.uppercased())
                     .foregroundColor(Color.white)
                     .font(.largeTitle)
                     .fontWeight(.heavy)
@@ -64,12 +64,14 @@ public struct OnboardingCardView: View {
                     .shadow(color: Color(red: 0, green: 0, blue: 0, opacity: 0.15), radius: 2, x: 2, y: 2)
 
                 // CARD: HEADLINE
-                Text(card.headline)
-                    .foregroundColor(Color.white)
-                    .multilineTextAlignment(.center)
-                    .padding(.horizontal, 16)
-                    .frame(maxWidth: 480)
-                    .lineLimit(nil)
+                if card.headline != "" {
+                    Text(card.headline.uppercased())
+                        .foregroundColor(Color.white)
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal, 16)
+                        .frame(maxWidth: 480)
+                        .lineLimit(nil)
+                }
 
                 if card.description != "" {
                     Text(card.description)
