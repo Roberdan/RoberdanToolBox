@@ -27,6 +27,7 @@ public struct OnboardingView: View {
         TabView {
             ForEach(onboardingCards) { item in
                 OnboardingCardView(card: item, startMsg: startMsg, cardBackGroundUIColor: cardBackGroundUIColor)
+                    .tag(item.tagNumber)
             }
         }
         .tabViewStyle(PageTabViewStyle())
@@ -142,8 +143,9 @@ public struct OnboardingCard: Identifiable {
     public var form: AnyView?
     public var isLast: Bool
     public var alignTop: Bool
+    public var tagNumber: Int
     
-    public init(title: String, headline: String, image: String, gradientColors: [Color], description: String, form: AnyView?, isLast: Bool, alignTop: Bool) {
+    public init(title: String, headline: String, image: String, gradientColors: [Color], description: String, form: AnyView?, isLast: Bool, alignTop: Bool, tagNumber: Int) {
         self.title = title
         self.alignTop = alignTop
         self.description = description
@@ -152,6 +154,7 @@ public struct OnboardingCard: Identifiable {
         self.gradientColors = gradientColors
         self.form = form
         self.isLast = isLast
+        self.tagNumber = tagNumber
     }
 }
 
