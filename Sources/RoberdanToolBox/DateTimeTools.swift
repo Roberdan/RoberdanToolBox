@@ -44,6 +44,18 @@ extension TimeInterval{
         return formatter.string(from: Date(timeIntervalSince1970: self))
     }
     
+    public func timeClockFullFormatter() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm:ss"
+        return formatter.string(from: Date(timeIntervalSince1970: self))
+    }
+    
+    public func secsOnly() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "ss"
+        return formatter.string(from: Date(timeIntervalSince1970: self))
+    }
+    
     public func toTimeStampFormatter() -> String {
         return timeStampFormatterHHmmss.string(from:  Date(timeIntervalSince1970: self))
     }
